@@ -20,12 +20,12 @@ pipeline {
                 sh 'echo "Creating logic image"'
                 sh 'cd ${WORKSPACE}/sa-logic && docker build -t logic:1.0.0 .'
                 sh 'echo "Logic Image created"'
-
             }
         }
         stage('push to jakdev'){
             when {
-                branch 'dev'
+                #branch 'dev'
+		GIT_BRANCH == 'dev'
                 }
             steps {
                 withDockerRegistry([ credentialsId: "harboraccess", url: "https://harbor.devopsdoor.com" ]){
