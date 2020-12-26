@@ -24,7 +24,6 @@ pipeline {
         }
         stage('push to jakdev'){
             when {
-                #branch 'dev'
 		GIT_BRANCH == 'dev'
                 }
             steps {
