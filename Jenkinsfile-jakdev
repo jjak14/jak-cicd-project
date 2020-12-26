@@ -12,13 +12,13 @@ pipeline {
         stage('Build Images') {
             steps {
                 sh 'echo "Creating fronted Image"'
-                sh 'cd ${WORKSPACE}/frontend && docker build -t frontend:1.0.0 .'
+                sh 'cd ${WORKSPACE}/sa-frontend && docker build -t frontend:1.0.0 .'
                 sh 'echo "Frontend Image created"'
                 sh 'echo "Creating webapp Image"'
-                sh 'cd ${WORKSPACE}/webapp && docker build -t webapp:1.0.0 .'
+                sh 'cd ${WORKSPACE}/sa-webapp && docker build -t webapp:1.0.0 .'
                 sh 'echo "Webapp Image Created"'
                 sh 'echo "Creating logic image"'
-                sh 'cd ${WORKSPACE}/logic && docker build -t logic:1.0.0 .'
+                sh 'cd ${WORKSPACE}/sa-logic && docker build -t logic:1.0.0 .'
                 sh 'echo "Logic Image created"'
 
             }
