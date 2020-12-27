@@ -2,9 +2,6 @@ pipeline {
     agent any
     stages {
         stage('Deploy to Dev Cluster'){
-            when {
-                branch 'dev'
-                }
             steps {
                 sh 'cd ${WORKSPACE}/resource-manifests-dev/ && kubectl apply -f .'
 

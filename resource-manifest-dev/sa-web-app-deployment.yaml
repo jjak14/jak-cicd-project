@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: sa-web-app
-  namespace: devopsdoor-dev
+  namespace: jak-cd-dev
   labels:
     app: sa-web-app
 spec:
@@ -24,7 +24,7 @@ spec:
       imagePullSecrets:
       - name: harborcred
       containers:
-      - image: harbor.devopsdoor.com/cicd_dev/sa-webapp:1.0.3
+      - image: harbor.devopsdoor.com/jakdev/sa-webapp:1.0.3
         imagePullPolicy: Always
         name: sa-web-app
         env:

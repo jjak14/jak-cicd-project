@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: sa-logic
-  namespace: devopsdoor-dev
+  namespace: jak-cd-dev
   labels:
     app: sa-logic
 spec:
@@ -24,7 +24,7 @@ spec:
       imagePullSecrets:
       - name: harborcred
       containers:
-        - image: harbor.devopsdoor.com/cicd_dev/sa-logic:1.0.3
+        - image: harbor.devopsdoor.com/jakdev/sa-logic:1.0.3
           imagePullPolicy: Always
           name: sa-logic
           ports:
