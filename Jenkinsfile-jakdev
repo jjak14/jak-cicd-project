@@ -37,5 +37,21 @@ pipeline {
                 }
             }
         }
+	stage('push to jakprod'){
+            when {
+                expression { return env.BRANCH_NAME == 'master'; }
+                }
+            steps {
+                withDockerRegistry([ credentialsId: "harboraccess", url: "https://harbor.devopsdoor.com" ]){
+                sh 'docker tag frontend:1.0.0 harbor.devopsdoor.com/jakprod/frontend:1.0.0'
+                sh 'docker tag webapp:1.0.0 harbor.devopsdoor.com/jakprod/webapp:1.0.0'
+                sh 'docker tag frontend:1.0.0 harbor.devopsdoor.com/jakprod/logic:1.0.0'
+                sh 'docker push harbor.devopsdoor.com/jakprod/frontend:1.0.0'
+                sh 'docker push harbor.devopsdoor.com/jakprod/webapp:1.0.0'
+                sh 'docker push harbor.devopsdoor.com/jakprod/logic:1.0.0'
+                }
+            }
+        }
+
     }
 }
