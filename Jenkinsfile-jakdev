@@ -24,10 +24,8 @@ pipeline {
         }
         stage('push to jakdev') {
             when {
-		anyOf {
-			environment name: 'env.BRANCH_NAME, value: 'dev'
-			}
-                }
+		branch 'dev'
+		}
             steps {
                 withDockerRegistry([ credentialsId: "harboraccess", url: "https://harbor.devopsdoor.com" ]){
                 sh 'docker tag frontend harbor.devopsdoor.com/jakdev/sa-frontend:1.0.0'
