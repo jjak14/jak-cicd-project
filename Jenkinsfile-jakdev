@@ -12,13 +12,13 @@ pipeline {
         stage('Build Images') {
             steps {
                 sh 'echo "Creating fronted Image"'
-                sh 'cd ${WORKSPACE}/sa-frontend && docker build -t frontend .'
+                sh 'cd ${WORKSPACE}/sa-frontend && docker build -t sa-frontend .'
                 sh 'echo "Frontend Image created"'
                 sh 'echo "Creating webapp Image"'
-                sh 'cd ${WORKSPACE}/sa-webapp && docker build -t webapp .'
+                sh 'cd ${WORKSPACE}/sa-webapp && docker build -t sa-webapp .'
                 sh 'echo "Webapp Image Created"'
                 sh 'echo "Creating logic image"'
-                sh 'cd ${WORKSPACE}/sa-logic && docker build -t logic .'
+                sh 'cd ${WORKSPACE}/sa-logic && docker build -t sa-logic .'
                 sh 'echo "Logic Image created"'
             }
         }
@@ -28,12 +28,12 @@ pipeline {
 		}
             steps {
                 withDockerRegistry([ credentialsId: "harboraccess", url: "https://harbor.devopsdoor.com" ]){
-                sh 'docker tag frontend harbor.devopsdoor.com/jakdev/frontend:1.0.1'
-                sh 'docker tag webapp harbor.devopsdoor.com/jakdev/webapp:1.0.1'
-                sh 'docker tag frontend harbor.devopsdoor.com/jakdev/logic:1.0.1'
-                sh 'docker push harbor.devopsdoor.com/jakdev/frontend:1.0.1'
-                sh 'docker push harbor.devopsdoor.com/jakdev/webapp:1.0.1'
-                sh 'docker push harbor.devopsdoor.com/jakdev/logic:1.0.1'
+                sh 'docker tag sa-frontend harbor.devopsdoor.com/jakdev/sa-frontend:1.0.3'
+                sh 'docker tag sa-webapp harbor.devopsdoor.com/jakdev/sa-webapp:1.0.3'
+                sh 'docker tag sa-frontend harbor.devopsdoor.com/jakdev/sa-logic:1.031'
+                sh 'docker push harbor.devopsdoor.com/jakdev/sa-frontend:1.0.3'
+                sh 'docker push harbor.devopsdoor.com/jakdev/sa-webapp:1.0.3'
+                sh 'docker push harbor.devopsdoor.com/jakdev/sa-logic:1.0.3'
                 }
             }
         }
@@ -43,12 +43,12 @@ pipeline {
                 }
             steps {
                 withDockerRegistry([ credentialsId: "harboraccess", url: "https://harbor.devopsdoor.com" ]){
-                sh 'docker tag frontend harbor.devopsdoor.com/jakprod/frontend:1.0.1'
-                sh 'docker tag webapp harbor.devopsdoor.com/jakprod/webapp:1.0.1'
-                sh 'docker tag frontend harbor.devopsdoor.com/jakprod/logic:1.0.1'
-                sh 'docker push harbor.devopsdoor.com/jakprod/frontend:1.0.1'
-                sh 'docker push harbor.devopsdoor.com/jakprod/webapp:1.0.1'
-                sh 'docker push harbor.devopsdoor.com/jakprod/logic:1.0.1'
+                sh 'docker tag sa-frontend harbor.devopsdoor.com/jakprod/sa-frontend:1.0.3'
+                sh 'docker tag sa-webapp harbor.devopsdoor.com/jakprod/sa-webapp:1.0.3'
+                sh 'docker tag sa-frontend harbor.devopsdoor.com/jakprod/sa-logic:1.0.3'
+                sh 'docker push harbor.devopsdoor.com/jakprod/sa-frontend:1.0.3'
+                sh 'docker push harbor.devopsdoor.com/jakprod/sa-webapp:1.0.3'
+                sh 'docker push harbor.devopsdoor.com/jakprod/sa-logic:1.0.3'
                 }
             }
         }
