@@ -23,9 +23,6 @@ pipeline {
             }
         }
         stage('push to jakdev') {
-            when {
-		branch 'dev'
-		}
             steps {
                 withDockerRegistry([ credentialsId: "harboraccess", url: "https://harbor.devopsdoor.com" ]){
                 sh 'docker tag sa-frontend harbor.devopsdoor.com/jakdev/sa-frontend:1.0.3'
@@ -37,21 +34,5 @@ pipeline {
                 }
             }
         }
-	stage('push to jakprod'){
-            when {
-                branch 'master'
-                }
-            steps {
-                withDockerRegistry([ credentialsId: "harboraccess", url: "https://harbor.devopsdoor.com" ]){
-                sh 'docker tag sa-frontend harbor.devopsdoor.com/jakprod/sa-frontend:1.0.3'
-                sh 'docker tag sa-webapp harbor.devopsdoor.com/jakprod/sa-webapp:1.0.3'
-                sh 'docker tag sa-frontend harbor.devopsdoor.com/jakprod/sa-logic:1.0.3'
-                sh 'docker push harbor.devopsdoor.com/jakprod/sa-frontend:1.0.3'
-                sh 'docker push harbor.devopsdoor.com/jakprod/sa-webapp:1.0.3'
-                sh 'docker push harbor.devopsdoor.com/jakprod/sa-logic:1.0.3'
-                }
-            }
-        }
-
     }
 }
