@@ -24,7 +24,7 @@ pipeline {
         }
         stage('push to jakdev') {
             when {
-		expression { return env.BRANCH_NAME == 'dev'; }
+		BRANCH_NAME == 'dev'
                 }
             steps {
                 withDockerRegistry([ credentialsId: "harboraccess", url: "https://harbor.devopsdoor.com" ]){
