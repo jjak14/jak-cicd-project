@@ -22,6 +22,7 @@ pipeline {
                 sh 'echo "Logic Image created"'
             }
         }
+        
         stage('push to jakdev') {
             steps {
                 withDockerRegistry([ credentialsId: "harboraccess", url: "https://harbor.devopsdoor.com" ]){
