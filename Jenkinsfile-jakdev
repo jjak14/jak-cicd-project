@@ -28,12 +28,12 @@ pipeline {
 		}
             steps {
                 withDockerRegistry([ credentialsId: "harboraccess", url: "https://harbor.devopsdoor.com" ]){
-                sh 'docker tag frontend harbor.devopsdoor.com/jakdev/sa-frontend:1.0.0'
-                sh 'docker tag webapp harbor.devopsdoor.com/jakdev/sa-webapp:1.0.0'
-                sh 'docker tag frontend harbor.devopsdoor.com/jakdev/sa-logic:1.0.0'
-                sh 'docker push harbor.devopsdoor.com/jakdev/frontend:1.0.0'
-                sh 'docker push harbor.devopsdoor.com/jakdev/webapp:1.0.0'
-                sh 'docker push harbor.devopsdoor.com/jakdev/logic:1.0.0'
+                sh 'docker tag frontend harbor.devopsdoor.com/jakdev/sa-frontend:1.0.1'
+                sh 'docker tag webapp harbor.devopsdoor.com/jakdev/sa-webapp:1.0.1'
+                sh 'docker tag frontend harbor.devopsdoor.com/jakdev/sa-logic:1.0.1'
+                sh 'docker push harbor.devopsdoor.com/jakdev/frontend:1.0.1'
+                sh 'docker push harbor.devopsdoor.com/jakdev/webapp:1.0.1'
+                sh 'docker push harbor.devopsdoor.com/jakdev/logic:1.0.1'
                 }
             }
         }
@@ -43,12 +43,12 @@ pipeline {
                 }
             steps {
                 withDockerRegistry([ credentialsId: "harboraccess", url: "https://harbor.devopsdoor.com" ]){
-                sh 'docker tag frontend harbor.devopsdoor.com/jakprod/frontend:1.0.0'
-                sh 'docker tag webapp harbor.devopsdoor.com/jakprod/webapp:1.0.0'
-                sh 'docker tag frontend harbor.devopsdoor.com/jakprod/logic:1.0.0'
-                sh 'docker push harbor.devopsdoor.com/jakprod/frontend:1.0.0'
-                sh 'docker push harbor.devopsdoor.com/jakprod/webapp:1.0.0'
-                sh 'docker push harbor.devopsdoor.com/jakprod/logic:1.0.0'
+                sh 'docker tag frontend harbor.devopsdoor.com/jakprod/frontend:1.0.1'
+                sh 'docker tag webapp harbor.devopsdoor.com/jakprod/webapp:1.0.1'
+                sh 'docker tag frontend harbor.devopsdoor.com/jakprod/logic:1.0.1'
+                sh 'docker push harbor.devopsdoor.com/jakprod/frontend:1.0.1'
+                sh 'docker push harbor.devopsdoor.com/jakprod/webapp:1.0.1'
+                sh 'docker push harbor.devopsdoor.com/jakprod/logic:1.0.1'
                 }
             }
         }
